@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="homestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  
+  <a href="#">Home</a>
+  <a href="#">Services</a>
+  <a href="#">About</a>
+  <a href="#">Find Me</a>
+</div>
+
+  <button class="openbtn" onclick="openNav()">☰</button>   
+
+ 
+    
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "200px";
+  document.getElementById("mySidepanel").style.height = "400px";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+  document.getElementById("mySidepanel").style.height = "0";
+}
+</script>
+
+<img class="logo" src="Logo.jpg">
+<div class="main">
+<h1 class="h1">Welcome</h1>
+
+<div class="gears-embed" aria-label="Animated gears artwork">
+  <canvas class="gears-canvas" width="400" height="400" aria-hidden="true"></canvas>
+</div>
+
+<style>
+  
+</style>
+
+<script>
+    
+  (function () {
+    "use strict";
+
+    var script = document.currentScript;
+    var root = script && script.previousElementSibling && script.previousElementSibling.previousElementSibling;
+    var canvas = root ? root.querySelector(".gears-canvas") : null;
+    var ctx;
+    var tx;
+    var ty;
+    var N = 7;
+    var pr = 0;
+
+    if (!canvas) {
+      return;
+    }
+
+    ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      return;
+    }
+
+    canvas.width = 400;
+    canvas.height = 400;
+    tx = canvas.width / 2;
+    ty = canvas.height / 2;
+
+    function animate() {
+      var a;
+      var b;
+      var c;
+      var d;
+      var x;
+      var y;
+      var x1;
+      var y1;
+      var r;
+      var r1;
+      var tim;
+      var n;
+      var han;
+      var kan;
+      var t;
+      var len;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#75143e";
+
+      tim = Date.now() / 40;
+      n = tim / 200;
+      han = 10 + ran() * 5;
+      kan = (N + 1) * han;
+      t = (tim / 73 + ran() / 5) % 1;
+      len = 5;
+      r = tim / 500;
+
+      drawGear(tx, ty, han, r + t * Math.PI * 2);
+
+      for (a = 0; a < len; a++) {
+        x = Math.cos(r);
+        y = Math.sin(r);
+        b = (1 - t + a / len) % 1;
+        b = Math.pow(N, b) * han;
+        x1 = tx + x * kan;
+        y1 = ty + y * kan;
+        pr = -0.11 * Math.sin(tim / 49);
+        c = stepGear(x1, y1, han, [tx + x * b, ty + y * b]);
+        r1 = r;
+
+        for (d = 2; d < 7; d++) {
+          r1 += pr * Math.PI * 2;
+          x1 += Math.cos(r1) * kan;
+          y1 += Math.sin(r1) * kan;
+          c = stepGear(x1, y1, han, c);
+          pr *= 0.88;
+        }
+
+        r += Math.PI * 2 / len;
+      }
+
+      function ran() {
+        var value;
+        n++;
+        value = Math.sin(n * 3) + Math.sin(n * 7) + Math.sin(n * 19) + Math.sin(n * 43);
+        return value / 8 + 0.5;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function stepGear(targetX, targetY, size, tipPoint) {
+      var a;
+      var b;
+      var x;
+      var y;
+      var r;
+      var px;
+      var py;
+      var r0;
+      var distance;
+
+      x = tipPoint[0] - targetX;
+      y = tipPoint[1] - targetY;
+      distance = Math.sqrt(x * x + y * y);
+      r0 = r = Math.atan2(y, x);
+      px = Math.cos(r + pr * Math.PI * 2);
+      py = Math.sin(r + pr * Math.PI * 2);
+      b = distance / size;
+
+      if (b) {
+        b = Math.log(b) / Math.log(N);
+      }
+
+      r = -Math.PI * b * 2 + r;
+      drawGear(targetX, targetY, size, r);
+
+      a = (r - r0) / (Math.PI * 2);
+      a = (-a + 0.5 + pr + 100) % 1;
+      a = Math.pow(N, a) * size;
+
+      return [targetX - a * px, targetY - a * py];
+    }
+
+    function drawGear(centerX, centerY, size, rotation) {
+      var a;
+      var b;
+      var c;
+      var d;
+      var max;
+      var x;
+      var y;
+      var nm;
+      var points;
+
+      max = 1000;
+      nm = 11;
+      points = [];
+
+      for (a = 0; a < max; a++) {
+        d = a / (max - 1);
+        b = Math.pow(N, d);
+        c = Math.sin(b * nm);
+        b += c / 2;
+        x = Math.cos(rotation) * size * b;
+        y = Math.sin(rotation) * size * b;
+        points.push([centerX + x, centerY + y]);
+        rotation += Math.PI * 2 / max;
+      }
+
+      ctx.beginPath();
+
+      for (a = 0; a < max; a++) {
+        b = points[a];
+        ctx.lineTo(b[0], b[1]);
+      }
+
+      a = points[0];
+      b = points[points.length - 1];
+      drawArc(b[0], b[1], a[0], a[1], 1, true);
+      ctx.fill();
+    }
+
+    function drawArc(sx, sy, ex, ey, angle, reverse) {
+      var a;
+      var x;
+      var y;
+      var r;
+      var radius;
+      var distance;
+      var rx;
+      var ry;
+      var startAngle;
+      var endAngle;
+      var centerX;
+      var centerY;
+
+      x = ex - sx;
+      y = ey - sy;
+      r = Math.atan2(y, x);
+
+      if (reverse) {
+        r += Math.PI;
+      }
+
+      angle = Math.PI * 2 - angle;
+      rx = sx + x / 2;
+      ry = sy + y / 2;
+      radius = Math.pow(x * x + y * y, 0.5) / Math.sin(angle / 2) / 2;
+      distance = Math.cos(angle / 2) * radius;
+      x = Math.sin(r) * distance;
+      y = -Math.cos(r) * distance;
+      centerX = rx + x;
+      centerY = ry + y;
+      endAngle = r - angle / 2 + Math.PI / 2;
+      startAngle = endAngle + angle;
+
+      if (reverse) {
+        a = startAngle;
+        startAngle = endAngle;
+        endAngle = a;
+      }
+
+      ctx.arc(centerX, centerY, radius, startAngle, endAngle, reverse);
+    }
+
+    animate();
+  })();
+</script>
+<div class="welcome-intro" aria-label="Welcome introduction">
+  <h1 class="welcome-intro__heading">WELCOME to the MOVEMENT</h1>
+
+  <p class="welcome-intro__paragraph">
+    <strong class="welcome-intro__emphasis">Intentional</strong> placement,
+    <strong class="welcome-intro__emphasis">Design</strong> and
+    <strong class="welcome-intro__emphasis">Perspective</strong> seem to be the most effective way to capture attention;
+    to combine tone and dimension in a way that causes a reaction, as the best way to become remembered.
+    Being an artist requires detail for color shifts, typeface, design flow, and authenticity.
+  </p>
+
+  <p class="welcome-intro__paragraph">
+    The viewer needs to get lost within the work, almost to the point of intentional rumination,
+    even as they walk away; to teach a new interpretation in the minds of those unswayable.
+  </p>
+</div>
+
+<style>
+  .welcome-intro {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: transparent;
+    text-align: center;
+  }
+
+  .welcome-intro__heading,
+  .welcome-intro__paragraph {
+    font-family: "Ink Free", cursive;
+  }
+
+  .welcome-intro__heading {
+    margin: 0 0 24px;
+    font-size: clamp(28px, 5vw, 36px);
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 0 0 6px #000000, 0 0 6px #a05e2c;
+  }
+
+  .welcome-intro__paragraph {
+    margin: 0 0 16px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fdfcfd;
+    text-shadow: 0 0 6px #050505, 0 0 6px #fac3f2;
+  }
+
+  .welcome-intro__paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .welcome-intro__emphasis {
+    color: #75143e;
+    font-weight: 700;
+  }
+</style>
+</script>
+</div>
+</body>
+</html>
