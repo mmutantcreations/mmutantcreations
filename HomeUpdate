@@ -1,0 +1,268 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
+
+body {
+    background-image: url('neurons2.png');
+    background-color: #fdb766e7;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50vh; /* Or a fixed height, e.g., 600px */
+
+    background-position: center;
+    font-family: ink free;
+}
+.sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 250px;
+  top: 0;
+  left: 0;
+  background-color: #75143e;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 40px;
+}
+
+.sidepanel a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fcfcfc;
+  display: flex;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #f5880b;
+  justify-content: center;
+  transition: .05s;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #75143e;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#c008c0;
+}
+.sidepanel-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.menu-container .menu-text {
+  display: block; /* Hide text by default */
+}
+
+.menu-container:hover .menu-text {
+  display: block; /* Show on hover */
+  
+}
+
+/* Optional: Shift icon left when text appears */
+.menu-container:hover .hamburger-icon {
+  margin-right: 5px;
+}
+.logo {
+   display: block;
+   margin: auto;
+   margin-top: 40px;
+   width: 230px;
+   border-radius: 20%;
+}
+
+.h1 {
+    text-shadow: 0 0 6px #000000, 0 0 6px #080808;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 100px;
+    color: #ffffffd8;
+    font-family: ink free;
+}
+.h3 {
+    text-shadow: 0 0 6px #080808, 0 0 6px #501e01;
+    margin-top: 280px;
+    margin-left: 210px;
+    text-align: center;
+    font-size: 50px;
+    color: #ff8903;
+    font-family: ink free;
+}
+.gears-embed {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    box-shadow: none;
+    outline: none;
+    overflow: visible;
+    line-height: 0;
+    isolation: isolate;
+  }
+
+  .gears-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+  }
+  .main {
+    background-color: #75143e;
+    margin-top: -10px;
+    width: 78%;
+    margin-inline: auto;
+    text-align: center;
+    box-sizing: border-box;
+  }
+ul {
+  
+  margin:0;
+  padding:0;
+  font-family: 'Ink Free', sans-serif;
+  position:absolute;
+  top: 220%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size: 1.2em;
+  display:flex;
+  padding:60px;
+}
+
+ul li {
+  list-style:none;
+  margin:0 5px;
+}
+
+ul li a .fa {
+  font-size: 40px;
+  color: #262626;
+  line-height:80px;
+  transition: .5s;
+  padding-right: 14px;
+}
+
+ul li a span {
+  padding:0;
+  margin:0;
+  position:absolute;
+  top: 30px;
+  color: #262626;
+  letter-spacing: 4px;
+  transition: .5s;
+}
+
+ul li a {
+  text-decoration: none;
+  display:absolute;
+  display:block;
+  width:210px;
+  height:80px;
+  background: #fff;
+  text-align:left;
+  padding-left: 20px;
+  transform: rotate(-30deg) skew(25deg) translate(0,0);
+  transition:.5s;
+  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+}
+ul li a:before {
+  content: '';
+  position: absolute;
+  top:10px;
+  left:-20px;
+  height:100%;
+  width:20px;
+  background: #b1b1b1;
+  transform: .5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+ul li a:after {
+  content: '';
+  position: absolute;
+  bottom:-20px;
+  left:-10px;
+  height:20px;
+  width:100%;
+  background: #75143e;
+  transform: .5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+
+ul li a:hover {
+  transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
+  box-shadow: -50px 50px 50px rgba(0,0,0,.5);
+}
+
+ul li:hover .fa {
+  color:#fff;
+}
+
+ul li:hover span {
+  color:#fff;
+}
+
+ul li:hover:nth-child(1) a{
+  background: #3b5998;
+}
+ul li:hover:nth-child(1) a:before{
+  background: #365492;
+}
+ul li:hover:nth-child(1) a:after{
+  background: #4a69ad;
+}
+
+ul li:hover:nth-child(2) a{
+  background: #00aced;
+}
+ul li:hover:nth-child(2) a:before{
+  background: #097aa5;
+}
+ul li:hover:nth-child(2) a:after{
+  background: #53b9e0;
+}
+
+ul li:hover:nth-child(3) a{
+  background: #dd4b39;
+}
+ul li:hover:nth-child(3) a:before{
+  background: #b33a2b;
+}
+ul li:hover:nth-child(3) a:after{
+  background: #e66a5a;
+}
+
+ul li:hover:nth-child(4) a{
+  background: #e4405f;
+}
+ul li:hover:nth-child(4) a:before{
+  background: #d81c3f;
+}
+ul li:hover:nth-child(4) a:after{
+  background: #e46880;
+}
+.footer {
+  color: #000000;
+  font-size: 20px;
+}
+.footer a {
+  text-decoration: none;
+}
