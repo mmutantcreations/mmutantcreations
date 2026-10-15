@@ -1,7 +1,4 @@
 
-
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
-
 body {
     background-image: url('neurons2.png');
     background-color: #fdb766e7;
@@ -10,7 +7,7 @@ body {
     height: 50vh; /* Or a fixed height, e.g., 600px */
 
     background-position: center;
-    font-family: ink free;
+    font-family: Finger Paint;
 }
 .sidepanel  {
   width: 0;
@@ -57,7 +54,7 @@ body {
 }
 
 .openbtn:hover {
-  background-color:#c008c0;
+  background-color:#050505;
 }
 .sidepanel-container {
   display: flex;
@@ -77,6 +74,7 @@ body {
 .menu-container:hover .hamburger-icon {
   margin-right: 5px;
 }
+
 .logo {
    display: block;
    margin: auto;
@@ -91,16 +89,22 @@ body {
     text-align: center;
     font-size: 100px;
     color: #ffffffd8;
-    font-family: ink free;
+    font-family: Finger Paint;
 }
 .h3 {
-    text-shadow: 0 0 6px #080808, 0 0 6px #501e01;
-    margin-top: 280px;
-    margin-left: 210px;
+    text-shadow: 0 0 8px #080808, 0 0 10px #501e01;
     text-align: center;
-    font-size: 50px;
+    font-size: 80px;
     color: #ff8903;
-    font-family: ink free;
+    font-family: New Rocker;
+}
+.h4 {
+    text-shadow: 0 0 6px #080808, 0 0 6px #501e01;
+    margin-top: -5%;
+    text-align: center;
+    font-size: 30px;
+    color: #f7f6f6;
+    font-family: Finger Paint;
 }
 .gears-embed {
     display: block;
@@ -138,7 +142,7 @@ ul {
   
   margin:0;
   padding:0;
-  font-family: 'Ink Free', sans-serif;
+  font-family: 'Finger Paint', sans-serif;
   position:absolute;
   top: 220%;
   left:50%;
@@ -266,3 +270,40 @@ ul li:hover:nth-child(4) a:after{
 .footer a {
   text-decoration: none;
 }
+.welcome-intro {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: transparent;
+    text-align: center;
+  }
+
+  .welcome-intro__heading,
+  .welcome-intro__paragraph {
+    font-family: "Finger Paint";
+  }
+
+  .welcome-intro__heading {
+    margin: 0 0 24px;
+    font-size: 50px;
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 0 0 6px #000000, 0 0 6px #080808;
+  }
+
+  .welcome-intro__paragraph {
+    margin: 0 0 16px;
+    font-size: 30px;
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 0 6px #000000, 0 0 6px #080808;
+  }
+
+  .welcome-intro__emphasis {
+    color: #75143e;
+    font-weight: 800;
+    text-shadow: 0 0 6px #ffffff, 0 0 6px #ffffff;
+  }
