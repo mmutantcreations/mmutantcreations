@@ -75,6 +75,7 @@ body {
   margin-right: 5px;
 }
 
+
 .logo {
    display: block;
    margin: auto;
@@ -94,13 +95,13 @@ body {
 .h3 {
     text-shadow: 0 0 8px #080808, 0 0 10px #501e01;
     text-align: center;
-    font-size: 80px;
+    font-size: 90px;
     color: #ff8903;
     font-family: New Rocker;
 }
 .h4 {
     text-shadow: 0 0 6px #080808, 0 0 6px #501e01;
-    margin-top: -5%;
+    margin-top: 0%;
     text-align: center;
     font-size: 30px;
     color: #f7f6f6;
@@ -189,6 +190,7 @@ ul li a {
   box-shadow: -20px 20px 10px rgba(0,0,0,.5);
 }
 ul li a:before {
+  border-radius: 18px;
   content: '';
   position: absolute;
   top:10px;
@@ -200,6 +202,7 @@ ul li a:before {
   transform: rotate(0deg) skewY(-45deg);
 }
 ul li a:after {
+  border-radius: 18px;
   content: '';
   position: absolute;
   bottom:-20px;
