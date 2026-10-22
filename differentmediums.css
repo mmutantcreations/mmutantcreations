@@ -1,0 +1,320 @@
+body {
+    background-image: url('neurons.png');
+    background-color: #fdb766e7;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 40vh; /* Or a fixed height, e.g., 600px */
+
+    background-position: center;
+    font-family: Finger Paint;
+}
+
+.info {
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    padding: 7px;
+    border-radius: 10px;
+}
+.adobe {
+    margin-top: 300px;
+}
+.h1 {
+    font-size: 5em;
+    color: #75143e;
+    margin: auto;
+    text-align: center;
+}
+.h2 {
+    font-family: "New Rocker";
+    text-align: center;
+}
+.wonka {
+    text-align: center;
+    margin: auto;
+}
+.img {
+    
+    width: 300px;
+    height: 200px;
+    margin-top: 80px;
+    padding: 7px;
+    border-radius: 20px;
+    background-color: #ffb867;
+}
+.sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 250px;
+  top: 0;
+  left: 0;
+  background-color: #75143e;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 40px;
+}
+
+.sidepanel a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fcfcfc;
+  display: flex;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #f5880b;
+  justify-content: center;
+  transition: .05s;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #75143e;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#050505;
+}
+.sidepanel-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.menu-container .menu-text {
+  display: block; /* Hide text by default */
+}
+
+.menu-container:hover .menu-text {
+  display: block; /* Show on hover */
+  
+}
+
+/* Optional: Shift icon left when text appears */
+.menu-container:hover .hamburger-icon {
+  margin-right: 5px;
+}
+.animated-embed, .pdm {
+        font-family: "New Rocker";
+        font-size: 3em;
+        text-align: center;
+    }
+a.ex2:hover, a.ex2:active { font-size: 130%; }
+a.ex2:hover, a.ex2:active { color: #a05e2c; }
+.imgone { box-shadow: 0 0 10px #080808, 0 0 10px #080808 }
+.imgtwo { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgthree { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgfour { box-shadow: 0 0 10px #080808, 0 0 10px #080808 }
+.imgfive { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgsix { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgseven { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgeight { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgnine { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgten { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+.imgele { box-shadow: 0 0 10px #080808, 0 0 10px #080808  }
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centers images horizontally */
+  align-items: center;     /* Centers images vertically */
+  flex-wrap: wrap; 
+  gap: 20px;        
+}
+.image-container2 {
+  display: flex;
+  justify-content: center; /* Centers images horizontally */
+  align-items: center;     /* Centers images vertically */
+  flex-wrap: wrap;
+  gap: 20px;   
+}
+.image-container3 { 
+  display: flex;
+  justify-content: center; /* Centers images horizontally */
+  align-items: center;     /* Centers images vertically */
+  flex-wrap: wrap;
+  gap: 20px;   
+}
+.image-container4 {
+  display: flex;
+  justify-content: center; /* Centers images horizontally */
+  align-items: center;     /* Centers images vertically */
+  flex-wrap: wrap; 
+  gap: 10px;        
+}
+
+.image-container img {
+  width: 20%;             /* Adjust container size as needed */
+  height: auto;     
+}
+.image-container2 img {
+  margin-top: 15px;
+  width: 50%;             /* Adjust container size as needed */
+  height: auto;
+}
+.image-container3 img {
+  margin-top: 15px;
+  width: 20%;             /* Adjust container size as needed */
+  height: auto;
+}
+.image-container4 img {
+  margin-top: 20px;
+  width: 15%;             /* Adjust container size as needed */
+  height: auto;
+}
+
+
+
+/* Mobile-friendly: Stack them when screen is small */
+@media (max-width: 600px) {
+  .image-container {
+    flex-direction: column;
+  }
+  .image-container img {
+  display: block;          /* Removes the default inline bottom space gap */
+  max-width: 20%;         /* Keeps the image responsive */
+  max-height: 30%;        /* Prevents overflow */
+}
+}
+
+
+ul {
+  
+  margin: 0;
+  padding:0;
+  font-family: 'Finger Paint', sans-serif;
+  position:absolute;
+  top: 660%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size: 1em;
+  display:flex;
+  padding:60px;
+}
+
+ul li {
+  list-style:none;
+  margin:0 5px;
+}
+
+ul li a .fa {
+  font-size: 40px;
+  color: #262626;
+  line-height:70px;
+  transition: .5s;
+  padding-right: 14px;
+}
+
+ul li a span {
+  padding:0;
+  margin:0;
+  position:absolute;
+  top: 30px;
+  color: #262626;
+  letter-spacing: 4px;
+  transition: .5s;
+}
+
+ul li a {
+  text-decoration: none;
+  display:absolute;
+  display:block;
+  width:210px;
+  height:80px;
+  background: #fff;
+  text-align:left;
+  padding-left: 20px;
+  transform: rotate(-30deg) skew(25deg) translate(0,0);
+  transition:.5s;
+  box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+}
+ul li a:before {
+  border-radius: 18px;
+  content: '';
+  position: absolute;
+  top:10px;
+  left:-20px;
+  height:100%;
+  width:20px;
+  background: #b1b1b1;
+  transform: .5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+ul li a:after {
+  border-radius: 18px;
+  content: '';
+  position: absolute;
+  bottom:-20px;
+  left:-10px;
+  height:20px;
+  width:100%;
+  background: #75143e;
+  transform: .5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+
+ul li a:hover {
+  transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
+  box-shadow: -50px 50px 50px rgba(0,0,0,.5);
+}
+
+ul li:hover .fa {
+  color:#fff;
+}
+
+ul li:hover span {
+  color:#fff;
+}
+
+ul li:hover:nth-child(1) a{
+  background: #3b5998;
+}
+ul li:hover:nth-child(1) a:before{
+  background: #365492;
+}
+ul li:hover:nth-child(1) a:after{
+  background: #4a69ad;
+}
+
+ul li:hover:nth-child(2) a{
+  background: #00aced;
+}
+ul li:hover:nth-child(2) a:before{
+  background: #097aa5;
+}
+ul li:hover:nth-child(2) a:after{
+  background: #53b9e0;
+}
+
+ul li:hover:nth-child(3) a{
+  background: #dd4b39;
+}
+ul li:hover:nth-child(3) a:before{
+  background: #b33a2b;
+}
+ul li:hover:nth-child(3) a:after{
+  background: #e66a5a;
+}
+
+ul li:hover:nth-child(4) a{
+  background: #e4405f;
+}
+ul li:hover:nth-child(4) a:before{
+  background: #d81c3f;
+}
+ul li:hover:nth-child(4) a:after{
+  background: #e46880;
+}
