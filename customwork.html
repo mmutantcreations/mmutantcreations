@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Work</title>
+    <strong> <link rel="stylesheet" href="customwork.css"> </strong>
+  </head>  
+    
+    <style>
+        html, body { 
+  height: 100%; 
+  margin: 4; 
+  overflow:scroll;
+}
+body { 
+  background: #000;
+  margin: 0; 
+}
+main {
+  display: flex;
+}
+p {
+  line-height: 2;
+}
+span {
+  display: block;
+  width: 1.9vmax; 
+  height: 1vmax; 
+  font-size: 2vmax; 
+  color: #9bff9b11;
+  text-align: center;
+  font-family: "Chiller", sans-serif;
+}
+    </style>
+    <body>
+      
+<img src="there_is_no_spoon.jpg" alt="there is no spoon"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">  
+
+<main>
+    <script>
+const loadingSeq = ["L", "O", "A", "D", "I", "N", "G"];
+let loadingPos = 0;     
+        function r(from, to) {
+  return ~~(Math.random() * (to - from + 1) + from);
+}
+function pick() {
+  return arguments[r(0, arguments.length - 1)];
+}
+function getChar() {
+
+  // 2% chance to inject next LOADING letter
+  if (Math.random() < 0.0) {
+    const ch = loadingSeq[loadingPos];
+    loadingPos = (loadingPos + 1) % loadingSeq.length;
+    return ch;
+  }
+
+  // Otherwise return a random symbol like before
+  return String.fromCharCode(pick(
+    r(0x3041, 0x30ff),
+    r(0x2000, 0x206f),
+    r(0x0020, 0x003f)
+  ));
+}
+
+function loop(fn, delay) {
+  let stamp = Date.now();
+  function _loop() {
+    if (Date.now() - stamp >= delay) {
+      fn(); stamp = Date.now();
+    }
+    requestAnimationFrame(_loop);
+  }
+  requestAnimationFrame(_loop);
+}
+class Char {
+  constructor() {
+    this.element = document.createElement('span');
+    this.mutate();
+  }
+  mutate() {
+     const ch = getChar();
+  this.element.textContent = ch;
+
+  // If this is a LOADING letter, apply glow
+  if (loadingSeq.includes(ch)) {
+    this.element.style.color = "#fff";
+    this.element.style.fontSize = "1.2em";
+    this.element.style.textShadow = `
+      0 0 .5em #fff,
+      0 0 .5em #fff,
+      0 0 .5em #fff,
+    `;
+  } else {
+    // Reset style for normal characters
+    this.element.style.color = "";
+    this.element.style.textShadow = "";
+  }
+  }
+}
+class Trail {
+  constructor(list = [], options) {
+    this.list = list;
+    this.options = Object.assign(
+      { size: 10, offset: 0 }, options
+    );
+    this.body = [];
+    this.move();
+  }
+  traverse(fn) {
+    this.body.forEach((n, i) => {
+      let last = (i == this.body.length - 1);
+      if (n) fn(n, i, last);
+    });
+  }
+  move() {
+    this.body = [];
+    let { offset, size } = this.options;
+    for (let i = 0; i < size; ++i) {
+      let item = this.list[offset + i - size + 1];
+      this.body.push(item);
+    }
+    this.options.offset = 
+      (offset + 1) % (this.list.length + size - 1);
+  }
+}
+class Rain {
+  constructor({ target, row }) {
+    this.element = document.createElement('p');
+    this.build(row);
+    if (target) {
+      target.appendChild(this.element);
+    }
+    this.drop();
+  }
+  build(row = 20) {
+    let root = document.createDocumentFragment();
+    let chars = [];
+    for (let i = 0; i < row; ++i) {
+      let c = new Char();
+      root.appendChild(c.element);
+      chars.push(c);
+      if (Math.random() < .10) {
+        loop(() => c.mutate(), r(1e3, 5e3));
+      }
+    }
+    this.trail = new Trail(chars, { 
+      size: r(10, 30), offset: r(0, 100) 
+    });
+    this.element.appendChild(root); 
+  }
+  drop() {
+    let trail = this.trail;
+    let len = trail.body.length;
+    let delay = 100;
+    loop(() => {
+      trail.move();
+      trail.traverse((c, i, last) => {
+  if (!c.isLoading) {
+  c.element.style = `
+    color: hsl(26, 57%, ${90 / len * (i + 1)}%)
+  `;
+}
+
+
+
+        if (last) {
+         // 10% chance to inject next LOADING letter
+  if (Math.random() < 0.40) {
+    const ch = loadingSeq[loadingPos];
+    loadingPos = (loadingPos + 1) % loadingSeq.length;
+
+    c.element.textContent = ch;
+
+    // Glow + size
+    c.element.style = `
+      color: #fff;
+      font-size: 2em;
+    `;
+  } else {
+    c.isLoading = false; // <-- normal character
+    c.mutate();
+    c.element.style = `
+      color: hsl(40, 63%, 41%);
+      text-shadow:
+        0 0 .5em #fff,
+        0 0 .5em currentColor;
+    `;
+  }
+}
+
+
+
+
+      });
+    }, delay);
+  }
+}
+
+const main = document.querySelector('main');
+for (let i = 0; i < 50; ++i) {
+  new Rain({ target: main, row: 50 });
+}
+
+    </script>
+    
+
+</main>
+
+<div class="content">
+<h1 class="h1">TIMEFRAME</h1>
+<p class="p">When the inspiration hits:</p>
+<p class="p">* learning a new tool * <br> * some form of enjoyable experience * <br> *an emotional expression *</p>
+<p class="p">I express my appriciation through canvas.</p>
+<p class="p">All work is by eye from a small reference.</p>
+</div>
+<div id="mz-gallery-container">
+
+        <div id="mz-gallery">
+         
+    <figure>
+      <img src="adam.jpg" alt="Adam Lambert" width="500" height="700">
+      <figcaption>AdamLambert</figcaption></a>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      </figure>
+    
+    <figure>
+      <img src="joan.jpg" alt="Joan Jett" width="700" height="700">
+      <figcaption>Joan Jett <br>First *Enlargement* <br></figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="destroyer.jpg" alt="destroyer" width="700" height="700">
+      <figcaption>CC - BVB</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    </div>
+          <div id="mz-gallery">
+    <figure>
+      <img src="alanis.jpg" alt="Alanis Morissette" width="700" height="700">
+      <figcaption>Alanis Morissette</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    <figure>
+      <img src="mom.jpg" alt="My mom" width="700" height="700">
+      <figcaption>Mother<br></figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    <figure>
+      <img src="TSO.jpg" alt="destroyer" width="700" height="700">
+      <figcaption>Trans-Siberian Orchestra</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    </div>
+          <div id="mz-gallery">
+    <figure>
+      <img src="benson.jpg" alt="Benson" width="700" height="700">
+      <figcaption>Det. Benson (SVU)</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="tattoo_man.jpg" alt="Tattooed Man" width="700" height="700">
+      <figcaption>Tattooed Man <br> (Greatest Showman) <br></figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="Zendaya.jpg" alt="Zendaya" width="700" height="700">
+      <figcaption>Anna Wheeler <br> (Greatest Showman)</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    </div>
+            <div id="mz-gallery">
+    <figure>
+      <img src="georgia.jpg" alt="Georgia" width="700" height="700">
+      <figcaption>Pet</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+    </div>
+    
+
+        </div>
+    
+
+  </div>
+  <div class="enlarge">
+      <h1>To See Enlargments! <br>
+      <ul>
+      <li><a href="https://drive.google.com/file/d/14xRwaGkBo7jiVwPJI_mMupIz5GAioyl6/view?usp=sharing" target="_blank">Adam Lambert</a></li>
+      <li><a href="https://drive.google.com/file/d/1ya4Y7S2m3H5CRriUJvvxbdLshRlXQYMl/view?usp=sharing" target="_blank">Det. Bensen (Mariska Hargitay)</a></li>
+      <li><a href="https://drive.google.com/file/d/1Blio4YRe9CgHrg87O6OYqKwusvQXFs7B/view?usp=sharing" target="_blank">Alanis Morissette</a></li>
+      <li><a href="https://drive.google.com/file/d/11HWsoUdYm_zelHXq2VMUK0KdztLThmYE/view?usp=sharing" target="_blank">CC "Destroyer"</a></li>
+      <li><a href="https://drive.google.com/file/d/1qnE93WrhrRDZbUT-cEQrQFVmvKzFuhOW/view?usp=sharing" target="_blank">Georgia "Pet"</a></li>
+      <li><a href="https://drive.google.com/file/d/1ToUfnsVMWq1R6zcRqFKLSe8TDQWATduI/view?usp=sharing" target="_blank">TSO</a></li>
+      <li><a href="https://drive.google.com/file/d/1c2__KjokJGdTbwoWPG9MALeuxIdNxBVz/view?usp=sharing" target="_blank">Anna Wheeler (Zendaya)</a></li>
+      <li><a href="https://drive.google.com/file/d/1O9p32k1uYtWyxU142F2WLT2nbye_qsDu/view?usp=sharing" target="_blank">Tattooed Man</a></li>
+      <li><a href="https://drive.google.com/file/d/1YBSETy_VzMkFoBS6GBD55wGVdB-yI6Yl/view?usp=sharing" target="_blank">My Mom</a></li>
+      <li><a href="https://drive.google.com/file/d/1MAhA7zBW80oMKvDpdIk_DJxSOYNgJtUi/view?usp=sharing" target="_blank">Joan Jett</a></li>
+      </ul>
+    </h1>
+</div>
+</div>
+<div class="frame">      
+  <button class="btn">
+    <a href="https://www.millennialmutant/index.html" target="_blank"><span>Home</span></a>
+  </button>
+
+  <button class="btn">
+    <a href="https://www.millennialmutant/Contact.html" target="_blank"><span>Contact</span></a>
+  </button>
+
+  <button class="btn">
+    <a href="https://www.millennialmutant/About.html" target="_blank"><span>About</span></a>
+  </button>
+
+  <button class="btn">
+    <a href="https://www.millennialmutant/DifferentMediums.html" target="_blank"><span>Works</span></a>
+  </button>
+
+</div>
+</body>
+
+  
+</html>
