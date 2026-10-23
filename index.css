@@ -76,10 +76,11 @@ body {
 }
 .website {
     
-    
+}    
 .site {
     width: 230px;
     border-radius: 20%;
+}
 .logo {
    display: block;
    margin: auto;
