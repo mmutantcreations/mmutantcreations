@@ -74,7 +74,9 @@ body {
 .menu-container:hover .hamburger-icon {
   margin-right: 5px;
 }
-
+.website {
+    width: 230px;
+    border-radius: 20%;
 
 .logo {
    display: block;
