@@ -72,7 +72,17 @@ body {
 /* Optional: Shift icon left when text appears */
 .menu-container:hover .hamburger-icon {
   margin-right: 5px;
-}   
+}  
+.site {
+   text-align: center;
+   box-shadow: 0 12px 13px rgba(0, 0, 0, 0.3);
+   border-radius: 10%;
+   width: 100px;
+   transition: transform 0.3s ease;
+}
+.site:hover {
+    transform: scale(1.1);
+}
 .logo {
    display: block;
    margin: auto;
