@@ -79,9 +79,6 @@ body {
     transition: transform 0.3s ease;
     width: 200px;
 }
-.site {
-   align: center;
-}
 .site:hover {
     transform: scale(1.1);
 }
