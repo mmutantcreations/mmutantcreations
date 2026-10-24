@@ -83,7 +83,6 @@ body {
     transform: scale(1.1);
 }
 .logo {
-   margin: auto;
    margin-left: 10px;
    margin-top: 30px;
    width: 150px;
@@ -151,7 +150,7 @@ ul {
   padding:0;
   font-family: 'Finger Paint', sans-serif;
   position:absolute;
-  top: 230%;
+  top: 220%;
   left:50%;
   transform:translate(-50%, -50%);
   font-size: 1.2em;
