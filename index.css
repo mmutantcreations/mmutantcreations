@@ -77,11 +77,11 @@ body {
     box-shadow: 0 12px 13px rgba(0, 0, 0, 0.3);
     border-radius: 10%;
     transition: transform 0.3s ease;
+    width: 200px;
 }
 .site {
    align: center;
-   width: 280px;
-   }
+}
 .site:hover {
     transform: scale(1.1);
 }
